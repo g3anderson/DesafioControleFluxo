@@ -8,32 +8,40 @@ public class Contador {
 		
 		int primeiroParametroo = solicitarParametro();
 		int segundoParametro = solicitarParametro();
-	
+		
 		try {
-			
-			contar(primeiroParametroo, segundoParametro);
-			
+			contar(primeiroParametroo, segundoParametro);	
 		}
 		
 		catch (ParametrosInvalidosExeption e) {
-			System.out.println("O ssegundo parametro deve ser maior que o primeiro.");
+			System.out.println("O segundo parametro deve ser maior que o primeiro.");
 		}
 
 		
 	}
 	
 	public static int solicitarParametro() {	
+		
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Informe o valor do parametro: ");
 		int parametro = scanner.nextInt();	
+		
 		return parametro;
 		
 	}
 	
-	public static void contar(int primeiroParametro, int segundoParametro) {
+	public static void contar(int primeiroParametro, int segundoParametro) throws ParametrosInvalidosExeption{
+		 
+		int numeroRepeticoes = 0;
 		
-		for(int i = primeiroParametro; i <= segundoParametro ; i++) {
-			System.out.println("Imprimindo o número "+i);
+		if(primeiroParametro > segundoParametro) {
+			throw new ParametrosInvalidosExeption();
+		}
+		
+		for(int i = primeiroParametro ; i < segundoParametro ; i++){
+			numeroRepeticoes += 1;
+			System.out.println("Imprimindo o número "+numeroRepeticoes);
+			
 		}
 		
 	}
